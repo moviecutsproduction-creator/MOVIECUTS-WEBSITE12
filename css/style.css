@@ -1790,4 +1790,45 @@ body {
     }
 }
 
+/* WRITERS SECTION */
+
+.writers-section {
+    padding: 120px 40px;
+    text-align: center;
+    background: #000;
+}
+
+.writers-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 100;
+    font-size: 30px;
+    letter-spacing: 10px;
+    color: rgb(214,214,214);
+    margin-bottom: 40px;
+}
+
+.writers-about {
+    max-width: 800px;
+    margin: auto;
+    font-size: 17px;
+    color: #bbb;
+    line-height: 1.8;
+    margin-bottom: 50px;
+}
+
+.writers-btn {
+    display: inline-block;
+    padding: 12px 34px;
+    border: 1px solid #fff;
+    text-decoration: none;
+    color: #fff;
+    letter-spacing: 2px;
+    font-size: 13px;
+    transition: all 0.3s ease;
+}
+
+.writers-btn:hover {
+    background: #fff;
+    color: #000;
+}
 
