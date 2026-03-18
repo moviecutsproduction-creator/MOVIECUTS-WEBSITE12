@@ -1,368 +1,403 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Ink & Image Screenwriters</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
 background:#000;
 color:#fff;
-font-family: 'Palatino Linotype', serif;
-line-height:1.7;
+font-size: larger;
+font-family: "Roboto Mono", monospace;
+line-height:1.9;
 overflow-x:hidden;
+padding-top:80px;
 }
 
+/* BACK BUTTON */
+.back-home{
+position:fixed;
+top:20px;
+left:20px;
+z-index:2000;
+}
+.back-home a{
+color:#fff;
+text-decoration:none;
+font-size:12px;
+letter-spacing:2px;
+border:1px solid #444;
+padding:8px 14px;
+transition:.3s;
+}
+.back-home a:hover{
+background:#fff;
+color:#000;
+}
+
+/* HEADER */
 header{
-padding:30px;
+position:fixed;
+top:0;
+width:100%;
+background:rgba(0,0,0,0.9);
+padding:18px;
 text-align:center;
 border-bottom:1px solid #222;
+z-index:1000;
 }
 
-header h1{
-font-family:'Montserrat',sans-serif;
-font-weight:100;
-letter-spacing:8px;
-font-size:30px;
+/* HEADER ANIMATION */
+.header-rotate{
+position:relative;
+height:2.4em;
+overflow:hidden;
+font-family:'Montserrat';
+letter-spacing:6px;
 }
 
+.header-rotate span{
+position:absolute;
+left:50%;
+transform:translateX(-50%) translateY(120%);
+opacity:0;
+transition:.6s;
+}
+.header-rotate span.active{
+transform:translateX(-50%) translateY(0);
+opacity:1;
+}
+
+/* HERO */
+.hero{
+position:relative;
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+overflow:hidden;
+}
+
+.hero video{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+opacity:0.35;
+}
+
+.hero-overlay{
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.6);
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+}
+
+.hero img{
+width:580px;
+filter:invert(1);
+margin-bottom:20px;
+}
+
+/* TYPEWRITER */
+.typewriter{
+display:block;
+font-size:20px;
+letter-spacing:4px;
+text-align:center;
+font-weight:500;
+margin:20px auto;
+max-width:90%;
+color:#e0e0e0;
+text-transform:uppercase;
+}
+
+
+/* SECTION */
 section{
-padding:110px 30px;
 max-width:1100px;
 margin:auto;
+padding:100px 20px;
 text-align:center;
 }
 
 h2{
-font-family:'Montserrat',sans-serif;
-font-weight:100;
-letter-spacing:8px;
-margin-bottom:40px;
-font-size:28px;
-color:#ddd;
+font-family:'Montserrat';
+letter-spacing:6px;
+margin-bottom:30px;
 }
 
 p{
-font-size:17px;
 color:#bbb;
 margin-bottom:20px;
 }
 
-.hero{
-min-height:90vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:100px 30px;
-}
-
-.hero h1{
-font-size:48px;
-font-family:'Montserrat',sans-serif;
-letter-spacing:10px;
-font-weight:100;
-margin-bottom:30px;
-}
-
-.hero h2{
-font-size:22px;
-letter-spacing:4px;
-margin-bottom:20px;
-}
-
-.hero p{
-max-width:700px;
-}
-
-.services{
+/* GRID */
+.grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:40px;
-margin-top:50px;
+grid-template-columns:repeat(auto-fit,minmax(450px,2fr));
+gap:25px;
+margin-top:40px;
 }
 
-.service-box{
+.card{
 border:1px solid #222;
-padding:30px;
+padding:25px;
 transition:.3s;
 }
-
-.service-box:hover{
-border-color:#fff;
+.card:hover{
 transform:translateY(-5px);
+border-color:#fff;
 }
 
-.service-box h3{
-font-family:'Montserrat',sans-serif;
-font-weight:300;
-letter-spacing:2px;
-margin-bottom:15px;
-}
-
-.method{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:40px;
-margin-top:50px;
-}
-
-.step{
-border:1px solid #222;
-padding:30px;
-}
-
+/* FOOTER */
 footer{
+padding:60px;
 text-align:center;
-padding:80px 20px;
 border-top:1px solid #222;
-color:#777;
-}
-
-.contact p{
-margin-bottom:8px;
-}
-
-@media(max-width:768px){
-
-.hero h1{
-font-size:34px;
-}
-
-.hero h2{
-font-size:18px;
-}
-
+color:#666;
 }
 
 </style>
-
 </head>
 
 <body>
 
+<!-- BACK BUTTON -->
+<div class="back-home">
+<a href="/">← BACK TO MOVIECUTS</a>
+</div>
 
+<!-- HEADER -->
 <header>
-<h1>INK & IMAGE SCREENWRITERS</h1>
+<h1 class="header-rotate">
+<span class="active">INK & IMAGE</span>
+<span>SCREENWRITERS</span>
+<span>NARRATIVE STUDIO</span>
+</h1>
 </header>
 
+<!-- ONLY CONTENT UPDATED — DESIGN SAME -->
 
+<!-- HERO -->
 <section class="hero">
 
-<h1>INK & IMAGE</h1>
+<video autoplay muted loop playsinline>
+<source src="images/hero.mp4" type="video/mp4">
+</video>
 
-<h2>Where Every Word Finds Its Vision</h2>
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+
+<img src="images/Ink&Image.png">
+
+<h2 class="typewriter">|| Where Every Word Finds Its Vision ||</h2>
 
 <p>
-A narrative development studio dedicated to transforming ideas into compelling
-stories for screen, stage, and brand communication.
+Great ideas are everywhere. Great execution is rare.
+Powerful stories don't happen by accident; they are engineered
+with precision, structure, and vision.
 </p>
+
+<p>
+At Ink & Image Screenwriters, we transform ideas into powerful
+narratives ready for screen, stage, business, or publication.
+From Ink to Image.
+</p>
+
+</div>
 
 </section>
 
-
+<!-- ABOUT -->
 <section>
 
-<h2>FROM PAGE TO SCREEN</h2>
+<h2>ABOUT US</h2>
+
+<p><strong>One Roof. Infinite Stories.</strong></p>
 
 <p>
-Powerful stories do not happen by accident. They are built through vision,
-structure, and creative discipline.
+Ink & Image Screenwriters is a full-scale narrative development studio
+dedicated to storytelling across cinema, streaming platforms,
+global business communication, and publication.
 </p>
 
 <p>
-Ink & Image is a narrative development studio supporting storytelling across
-film, streaming platforms, corporate communication, and creative writing.
-We help transform early ideas into narratives that are technically sound,
-emotionally engaging, and ready for production.
+We combine creative instinct with narrative science, ensuring every
+story has strong structure, compelling characters, and emotional impact.
+</p>
+
+<p>
+Our work bridges the gap between raw ideas and professional screenplays,
+creative storytelling and structured narrative design, and global
+cinematic standards with regional cultural authenticity.
 </p>
 
 </section>
 
-
+<!-- VISION -->
 <section>
 
-<h2>ABOUT</h2>
+<h2>OUR VISION</h2>
 
 <p>
-Ink & Image Screenwriters is a full-service storytelling studio focused on
-narrative development across film, media, and brand communication.
-</p>
-
-<p>
-Many promising ideas fail to reach their potential due to weak structure,
-inconsistent dialogue, or lack of professional development. Our role is to
-bridge that gap by transforming early concepts into refined, production-ready
-narratives.
+To build a global storytelling hub where ideas from any culture can
+evolve into powerful cinematic narratives.
+We believe strong stories are the foundation of successful cinema.
 </p>
 
 </section>
 
-
+<!-- SERVICES -->
 <section>
 
-<h2>SERVICES</h2>
+<h2>CORE SERVICES</h2>
 
-<div class="services">
+<p>
+Our services support projects at every stage—from concept development
+to final script polish—ensuring clarity, engagement, and production readiness.
+</p>
 
-<div class="service-box">
-<h3>Feature Screenwriting</h3>
-<p>Original screenplays developed from concept to final draft.</p>
-</div>
+<div class="grid">
 
-<div class="service-box">
-<h3>Script Doctoring</h3>
-<p>Professional refinement of dialogue, pacing and narrative structure.</p>
-</div>
-
-<div class="service-box">
-<h3>Series Development</h3>
-<p>Pilot scripts, show bibles and episodic storytelling frameworks.</p>
-</div>
-
-<div class="service-box">
-<h3>Pitch Decks</h3>
-<p>Treatments, loglines and project presentation materials.</p>
-</div>
-
-<div class="service-box">
-<h3>Corporate Storytelling</h3>
-<p>Brand narratives, company profiles and executive speechwriting.</p>
-</div>
-
-<div class="service-box">
-<h3>Creative Writing</h3>
-<p>Manuscript development, memoir writing and literary storytelling.</p>
-</div>
+<div class="card"><h3>Film & Television</h3></div>
+<div class="card"><h3>Web Series & Streaming</h3></div>
+<div class="card"><h3>Corporate Storytelling</h3></div>
+<div class="card"><h3>Creative & Literary Writing</h3></div>
+<div class="card"><h3>Script Editing & Formatting</h3></div>
+<div class="card"><h3>Kannada Localization</h3></div>
 
 </div>
 
 </section>
 
-
+<!-- METHOD -->
 <section>
 
-<h2>FOR PRODUCERS</h2>
+<h2>THE INK & IMAGE METHOD</h2>
 
-<p>
-Ink & Image collaborates with producers, directors, and production houses
-to develop narratives that translate effectively from script to screen.
-</p>
+<p><strong>A Structured Approach to Powerful Storytelling</strong></p>
 
-<p>
-We support projects through feature screenwriting, structural polishing,
-and story development for films, OTT series, and streaming platforms.
-</p>
+<div class="grid">
+
+<div class="card">
+<h3>Step 1 — The Ink</h3>
+<p>Concept exploration, tone, and audience alignment.</p>
+</div>
+
+<div class="card">
+<h3>Step 2 — The Draft</h3>
+<p>Story structure, character arcs, and screenplay development.</p>
+</div>
+
+<div class="card">
+<h3>Step 3 — The Polish</h3>
+<p>Refinement of dialogue, pacing, and emotional depth.</p>
+</div>
+
+<div class="card">
+<h3>Step 4 — The Image</h3>
+<p>Production-ready screenplay with pitch materials.</p>
+</div>
+
+</div>
 
 </section>
 
-
+<!-- LOCALIZATION -->
 <section>
 
 <h2>KANNADA LOCALIZATION</h2>
 
+<p><strong>Your Gateway to the Karnataka Market</strong></p>
+
 <p>
-Releasing a film in Karnataka requires more than translation.
-It requires authentic language, cultural understanding, and
-professional dialogue adaptation.
+Releasing a film in Karnataka requires more than translation—it requires
+authentic language and cultural understanding.
 </p>
 
 <p>
-Ink & Image provides Kannada dubbing script development and
-localization services to help production houses adapt films
-for Kannada-speaking audiences.
+• Dialogue Adaptation (Transcreation)<br>
+• Lip-Sync Accuracy<br>
+• Censor-Ready Scripts (CBFC)<br>
 </p>
 
 </section>
 
-
+<!-- PROJECTS -->
 <section>
 
 <h2>PROJECTS IN DEVELOPMENT</h2>
 
 <p>
-Ink & Image is actively developing original narrative concepts
-for film and streaming platforms including character-driven
-dramas, psychological thrillers, and social narratives.
+We actively develop original narrative concepts across formats:
 </p>
 
 <p>
-We welcome collaboration with producers, directors,
-production houses, OTT platforms, and creative investors.
+• Feature Films – character-driven drama, psychological thrillers<br>
+• Web Series – OTT multi-season storytelling<br>
+• Documentaries – real-world narratives<br>
 </p>
 
 </section>
 
-
+<!-- CONTACT -->
 <section>
 
-<h2>THE INK & IMAGE METHOD</h2>
-
-<div class="method">
-
-<div class="step">
-<h3>Step 1 — The Ink</h3>
-<p>Concept exploration and story vision alignment.</p>
-</div>
-
-<div class="step">
-<h3>Step 2 — The Draft</h3>
-<p>Development of narrative structure and character arcs.</p>
-</div>
-
-<div class="step">
-<h3>Step 3 — The Polish</h3>
-<p>Refinement of dialogue, pacing, and emotional impact.</p>
-</div>
-
-<div class="step">
-<h3>Step 4 — The Image</h3>
-<p>Production-ready screenplay formatted for industry standards.</p>
-</div>
-
-</div>
-
-</section>
-
-
-<section class="contact">
-
 <h2>CONTACT</h2>
+
+<p><strong>Let’s Write the Future</strong></p>
+
+<p>
+Have a story worth telling? Let’s turn it into something unforgettable.
+</p>
 
 <p><strong>INK & IMAGE SCREENWRITERS</strong></p>
 
 <p>R. Chandrashekar Prasad</p>
 
-<p>Screenwriter & Director</p>
+<p>Writer & Director</p>
 
 <p>Email: chandrashekarprasad.csp@gmail.com</p>
 
 <p>Phone: +91 9964593999</p>
 
-<p>Website: www.moviecuts.in</p>
+<p>Website: www.moviecuts.in/ink&image</p>
 
 </section>
 
-
 <footer>
-
-© 2026 Ink & Image Screenwriters
-
+© 2026 Ink & Image
 </footer>
 
+<script>
+
+/* HEADER LOOP */
+const texts=document.querySelectorAll(".header-rotate span");
+let i=0;
+setInterval(()=>{
+texts[i].classList.remove("active");
+i=(i+1)%texts.length;
+texts[i].classList.add("active");
+},2500);
+
+</script>
 
 </body>
 </html>
