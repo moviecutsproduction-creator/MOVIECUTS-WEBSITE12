@@ -1832,3 +1832,15 @@ body {
     color: #000;
 }
 
+.writers-logo{
+text-align:center;
+margin-bottom:40px;
+}
+
+.writers-logo img{
+max-width:700px;
+width:100%;
+height:auto;
+filter:invert(1);
+opacity:0.9;
+}
