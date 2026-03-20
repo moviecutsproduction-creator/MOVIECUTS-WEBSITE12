@@ -1790,40 +1790,58 @@ body {
     }
 }
 
-/* WRITERS SECTION */
+/* ===============================
+   WRITERS SECTION – RESPONSIVE FIX
+================================ */
 
+/* SECTION */
 .writers-section {
-    padding: 120px 40px;
+    padding: clamp(80px, 10vw, 140px) clamp(20px, 5vw, 80px);
     text-align: center;
     background: #000;
 }
 
+/* TITLE */
 .writers-title {
     font-family: 'Montserrat', sans-serif;
     font-weight: 100;
-    font-size: 30px;
-    letter-spacing: 10px;
+    font-size: clamp(20px, 3vw, 34px);
+    letter-spacing: clamp(4px, 1vw, 12px);
     color: rgb(214,214,214);
-    margin-bottom: 40px;
+    margin-bottom: clamp(30px, 5vw, 60px);
 }
 
+/* LOGO */
+.writers-logo {
+    margin-bottom: clamp(20px, 4vw, 50px);
+}
+
+.writers-logo img {
+    width: clamp(180px, 40vw, 700px);
+    height: auto;
+    filter: invert(1);
+    opacity: 0.9;
+}
+
+/* TEXT */
 .writers-about {
-    max-width: 800px;
-    margin: auto;
-    font-size: 17px;
+    max-width: min(800px, 90%);
+    margin: 0 auto;
+    font-size: clamp(14px, 1.4vw, 18px);
     color: #bbb;
-    line-height: 1.8;
-    margin-bottom: 50px;
+    line-height: 1.9;
+    margin-bottom: clamp(30px, 5vw, 60px);
 }
 
+/* BUTTON */
 .writers-btn {
     display: inline-block;
-    padding: 12px 34px;
+    padding: clamp(10px, 1.2vw, 14px) clamp(24px, 3vw, 40px);
     border: 1px solid #fff;
     text-decoration: none;
     color: #fff;
     letter-spacing: 2px;
-    font-size: 13px;
+    font-size: clamp(11px, 1vw, 14px);
     transition: all 0.3s ease;
 }
 
@@ -1832,15 +1850,14 @@ body {
     color: #000;
 }
 
-.writers-logo{
-text-align:center;
-margin-bottom:40px;
-}
+/* MOBILE FIX */
+@media (max-width: 480px) {
+    .writers-about {
+        line-height: 1.7;
+    }
 
-.writers-logo img{
-max-width:700px;
-width:100%;
-height:auto;
-filter:invert(1);
-opacity:0.9;
+    .writers-btn {
+        width: 100%;
+        max-width: 280px;
+    }
 }
