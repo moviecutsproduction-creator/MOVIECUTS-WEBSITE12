@@ -5,23 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Ink & Image Screenwriters</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 
 /* RESET */
 *{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
 
 body{
 background:#000;
 color:#fff;
-font-size: larger;
-font-family: "Roboto Mono", monospace;
-line-height:1.2;
+font-family:'Roboto Mono', monospace;
+line-height:1.7;
 overflow-x:hidden;
 padding-top:80px;
+-webkit-font-smoothing:antialiased;
 }
 
 /* BACK BUTTON */
@@ -51,19 +51,18 @@ position:fixed;
 top:0;
 width:100%;
 background:rgba(0,0,0,0.9);
-padding:18px;
+padding:clamp(8px,2vw,10px);
 text-align:center;
 border-bottom:1px solid #222;
 z-index:1000;
 }
 
-/* HEADER ANIMATION */
 .header-rotate{
 position:relative;
-height:2.4em;
+height:1.5em;
 overflow:hidden;
+letter-spacing:clamp(3px,0.8vw,8px);
 font-family:'Montserrat';
-letter-spacing:6px;
 }
 
 .header-rotate span{
@@ -80,75 +79,46 @@ opacity:1;
 
 /* HERO */
 .hero{
-position:relative;
-height:100vh;
+min-height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
-overflow:hidden;
-}
-
-.hero video{
-position:absolute;
-width:100%;
-height:100%;
-object-fit:cover;
-opacity:0.35;
-}
-
-.hero-overlay{
-position:absolute;
-inset:0;
-background:rgba(0,0,0,0.6);
-}
-
-.hero-content{
-position:relative;
-z-index:2;
+padding:clamp(80px,10vh,120px) 20px;
 }
 
 .hero img{
-width:580px;
-filter:invert(1);
-margin-bottom:20px;
-}
-
-.footer-logo img{
-width:280px;
-filter:invert(1);
-margin-bottom:20px;
-}
-
-/* TYPEWRITER */
-.typewriter{
-display:block;
-font-size:20px;
-letter-spacing:4px;
-text-align:center;
-font-weight:500;
-margin:20px auto;
+width:clamp(200px,40vw,580px);
 max-width:90%;
-color:#e0e0e0;
-text-transform:uppercase;
+filter:invert(1);
+margin-bottom:20px;
 }
 
+.typewriter{
+font-size:clamp(16px,2vw,22px);
+letter-spacing:4px;
+text-transform:uppercase;
+margin:20px auto;
+color:#ddd;
+}
 
 /* SECTION */
 section{
-max-width:1100px;
+max-width:min(1100px,90%);
 margin:auto;
-padding:100px 20px;
+padding:clamp(70px,8vw,120px) 20px;
 text-align:center;
 }
 
 h2{
 font-family:'Montserrat';
-letter-spacing:6px;
+letter-spacing:clamp(3px,0.6vw,8px);
+font-size:clamp(18px,2vw,30px);
 margin-bottom:30px;
 }
 
 p{
+font-size:clamp(14px,1.2vw,18px);
 color:#bbb;
 margin-bottom:20px;
 }
@@ -156,19 +126,32 @@ margin-bottom:20px;
 /* GRID */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(450px,2fr));
-gap:25px;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:clamp(20px,3vw,40px);
 margin-top:40px;
 }
 
 .card{
 border:1px solid #222;
 padding:25px;
-transition:.3s;
+transition:all 0.3s ease;
+background:rgba(255,255,255,0.02);
 }
 .card:hover{
-transform:translateY(-5px);
+transform:translateY(-6px);
 border-color:#fff;
+background:rgba(255,255,255,0.05);
+}
+
+/* SCROLL ANIMATION */
+.fade-in{
+opacity:0;
+transform:translateY(40px);
+transition:all 0.8s ease;
+}
+.fade-in.show{
+opacity:1;
+transform:translateY(0);
 }
 
 /* FOOTER */
@@ -179,37 +162,88 @@ border-top:1px solid #222;
 color:#666;
 }
 
+.footer-logo img{
+width:clamp(120px,20vw,280px);
+filter:invert(1);
+margin:20px auto;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+.hero{padding:80px 20px;}
+section{padding:70px 20px;}
+}
+
+/* 4K */
+@media(min-width:1800px){
+section{max-width:1400px;}
+}
+
+/* MOBILE & TABLET BACK BUTTON FIX */
+@media (max-width: 1024px){
+
+.back-home a{
+    font-size:0; /* hide text */
+    width:44px;
+    height:44px;
+    display:grid;              /* KEY FIX */
+    place-items:center;        /* PERFECT CENTER */
+    padding:0;
+    border-radius:50%;
+    border:1px solid #333;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(6px);
+}
+
+/* ARROW */
+.back-home a::before{
+    content:"←";
+    font-size:30px;
+    line-height:1;
+}
+
+.back-home{
+    top:15px;
+    left:15px;
+}
+
+.back-home a{
+    border:1px solid #333;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(6px);
+}
+
+}
+@media (max-width:1024px){
+
+.back-home a{
+border-radius:50%;
+width:44px;
+height:44px;
+}
+
+}
 </style>
 </head>
 
 <body>
 
-<!-- BACK BUTTON -->
 <div class="back-home">
 <a href="/">← BACK TO MOVIECUTS</a>
 </div>
 
-<!-- HEADER -->
 <header>
-<h1 class="header-rotate">
+<h2 class="header-rotate">
 <span class="active">INK & IMAGE</span>
 <span>SCREENWRITERS</span>
 <span>NARRATIVE STUDIO</span>
-</h1>
+</h2>
 </header>
 
-<!-- ONLY CONTENT UPDATED — DESIGN SAME -->
-
 <!-- HERO -->
-<section class="hero">
-
-
-<div class="hero-overlay"></div>
-
-<div class="hero-content">
-
+<section class="hero fade-in">
+<div>
 <img src="images/Ink&Image.png">
-
 <h2 class="typewriter">|| Where Every Word Finds Its Vision ||</h2>
 
 <p>
@@ -223,16 +257,12 @@ At Ink & Image Screenwriters, we transform ideas into powerful
 narratives ready for screen, stage, business, or publication.
 From Ink to Image.
 </p>
-
 </div>
-
 </section>
 
 <!-- ABOUT -->
-<section>
-
+<section class="fade-in">
 <h2>ABOUT US</h2>
-
 <p><strong>One Roof. Infinite Stories.</strong></p>
 
 <p>
@@ -251,12 +281,10 @@ Our work bridges the gap between raw ideas and professional screenplays,
 creative storytelling and structured narrative design, and global
 cinematic standards with regional cultural authenticity.
 </p>
-
 </section>
 
 <!-- VISION -->
-<section>
-
+<section class="fade-in">
 <h2>OUR VISION</h2>
 
 <p>
@@ -264,12 +292,10 @@ To build a global storytelling hub where ideas from any culture can
 evolve into powerful cinematic narratives.
 We believe strong stories are the foundation of successful cinema.
 </p>
-
 </section>
 
 <!-- SERVICES -->
-<section>
-
+<section class="fade-in">
 <h2>CORE SERVICES</h2>
 
 <p>
@@ -278,21 +304,17 @@ to final script polish—ensuring clarity, engagement, and production readiness.
 </p>
 
 <div class="grid">
-
 <div class="card"><h3>Film & Television</h3></div>
 <div class="card"><h3>Web Series & Streaming</h3></div>
 <div class="card"><h3>Corporate Storytelling</h3></div>
 <div class="card"><h3>Creative & Literary Writing</h3></div>
 <div class="card"><h3>Script Editing & Formatting</h3></div>
 <div class="card"><h3>Kannada Localization</h3></div>
-
 </div>
-
 </section>
 
 <!-- METHOD -->
-<section>
-
+<section class="fade-in">
 <h2>THE INK & IMAGE METHOD</h2>
 
 <p><strong>A Structured Approach to Powerful Storytelling</strong></p>
@@ -320,12 +342,10 @@ to final script polish—ensuring clarity, engagement, and production readiness.
 </div>
 
 </div>
-
 </section>
 
 <!-- LOCALIZATION -->
-<section>
-
+<section class="fade-in">
 <h2>KANNADA LOCALIZATION</h2>
 
 <p><strong>Your Gateway to the Karnataka Market</strong></p>
@@ -340,12 +360,10 @@ authentic language and cultural understanding.
 • Lip-Sync Accuracy<br>
 • Censor-Ready Scripts (CBFC)<br>
 </p>
-
 </section>
 
 <!-- PROJECTS -->
-<section>
-
+<section class="fade-in">
 <h2>PROJECTS IN DEVELOPMENT</h2>
 
 <p>
@@ -357,11 +375,10 @@ We actively develop original narrative concepts across formats:
 • Web Series – OTT multi-season storytelling<br>
 • Documentaries – real-world narratives<br>
 </p>
-
 </section>
 
 <!-- CONTACT -->
-<section>
+<section class="fade-in">
 
 <h2>CONTACT</h2>
 
@@ -370,20 +387,15 @@ We actively develop original narrative concepts across formats:
 <p>
 Have a story worth telling? Let’s turn it into something unforgettable.
 </p>
+
 <div class="footer-logo">
-    <img src="images/Ink&Image.png">
+<img src="images/Ink&Image.png">
 </div>
 
-
-
 <p>R. Chandrashekar Prasad</p>
-
 <p>Writer & Director</p>
-
 <p>Email: chandrashekarprasad.csp@gmail.com</p>
-
 <p>Phone: +91 9964593999</p>
-
 <p>Website: www.moviecuts.in/ink&image</p>
 
 </section>
@@ -394,7 +406,7 @@ Have a story worth telling? Let’s turn it into something unforgettable.
 
 <script>
 
-/* HEADER LOOP */
+/* HEADER ROTATION */
 const texts=document.querySelectorAll(".header-rotate span");
 let i=0;
 setInterval(()=>{
@@ -402,6 +414,19 @@ texts[i].classList.remove("active");
 i=(i+1)%texts.length;
 texts[i].classList.add("active");
 },2500);
+
+/* SCROLL ANIMATION */
+const faders=document.querySelectorAll(".fade-in");
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
+},{threshold:0.2});
+
+faders.forEach(el=>observer.observe(el));
 
 </script>
 
